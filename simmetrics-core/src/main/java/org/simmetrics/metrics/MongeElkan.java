@@ -2,7 +2,7 @@
  * #%L
  * Simmetrics Core
  * %%
- * Copyright (C) 2014 - 2016 Simmetrics Authors
+ * Copyright (C) 2014 - 2021 Simmetrics Authors
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -24,6 +24,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.Math.max;
 import static java.lang.Math.sqrt;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.simmetrics.ListMetric;
@@ -43,7 +44,7 @@ import org.simmetrics.StringMetric;
  * This class is immutable and thread-safe.
  * 
  */
-public final class MongeElkan implements ListMetric<String> {
+public final class MongeElkan implements ListMetric<String>, Serializable {
 
 	private final StringMetric metric;
 

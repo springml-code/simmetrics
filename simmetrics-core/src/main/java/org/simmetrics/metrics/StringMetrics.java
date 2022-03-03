@@ -2,7 +2,7 @@
  * #%L
  * Simmetrics Core
  * %%
- * Copyright (C) 2014 - 2016 Simmetrics Authors
+ * Copyright (C) 2014 - 2021 Simmetrics Authors
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -27,6 +27,7 @@ import static org.simmetrics.tokenizers.Tokenizers.qGram;
 import static org.simmetrics.tokenizers.Tokenizers.qGramWithPadding;
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -49,7 +50,7 @@ import com.google.common.collect.Multiset;
  * The created similarity metrics are immutable and thread-safe provided all their
  * components are also immutable and thread-safe.
  */
-public final class StringMetrics {
+public final class StringMetrics implements Serializable{
 
 	/**
 	 * Returns a cosine similarity metric over tokens in a string. The tokens
@@ -550,7 +551,7 @@ public final class StringMetrics {
 		return new ForMultiset(metric, tokenizer);
 	}
 
-	static final class ForList implements StringMetric {
+	static final class ForList implements StringMetric, Serializable {
 		private final Metric<List<String>> metric;
 		private final Tokenizer tokenizer;
 
@@ -583,7 +584,7 @@ public final class StringMetrics {
 		}
 	}
 
-	static final class ForListWithSimplifier implements StringMetric {
+	static final class ForListWithSimplifier implements StringMetric, Serializable {
 		private final Metric<List<String>> metric;
 		private final Simplifier simplifier;
 		private final Tokenizer tokenizer;
@@ -625,7 +626,7 @@ public final class StringMetrics {
 		}
 	}
 
-	static final class ForSet implements StringMetric {
+	static final class ForSet implements StringMetric, Serializable {
 
 		private final Metric<Set<String>> metric;
 		private final Tokenizer tokenizer;
@@ -659,7 +660,7 @@ public final class StringMetrics {
 
 	}
 
-	static final class ForSetWithSimplifier implements StringMetric {
+	static final class ForSetWithSimplifier implements StringMetric, Serializable {
 
 		private final Metric<Set<String>> metric;
 		private final Simplifier simplifier;
@@ -702,7 +703,7 @@ public final class StringMetrics {
 
 	}
 
-	static final class ForMultiset implements StringMetric {
+	static final class ForMultiset implements StringMetric, Serializable {
 
 		private final Metric<Multiset<String>> metric;
 		private final Tokenizer tokenizer;
@@ -736,7 +737,7 @@ public final class StringMetrics {
 
 	}
 
-	static final class ForMultisetWithSimplifier implements StringMetric {
+	static final class ForMultisetWithSimplifier implements StringMetric, Serializable {
 
 		private final Metric<Multiset<String>> metric;
 		private final Simplifier simplifier;
@@ -779,7 +780,7 @@ public final class StringMetrics {
 
 	}
 
-	static final class ForString implements StringMetric {
+	static final class ForString implements StringMetric, Serializable {
 		private final Metric<String> metric;
 
 		ForString(Metric<String> metric) {
@@ -802,7 +803,7 @@ public final class StringMetrics {
 
 	}
 
-	static final class ForStringWithSimplifier implements StringMetric {
+	static final class ForStringWithSimplifier implements StringMetric, Serializable {
 
 		private final Metric<String> metric;
 

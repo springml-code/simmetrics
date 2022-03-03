@@ -2,7 +2,7 @@
  * #%L
  * Simmetrics Core
  * %%
- * Copyright (C) 2014 - 2016 Simmetrics Authors
+ * Copyright (C) 2014 - 2021 Simmetrics Authors
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@
 
 package org.simmetrics;
 
+import java.io.Serializable;
+
 /**
  * Measures the similarity between two strings. The measurement results in a
  * value between 0 and 1 (inclusive). A value of zero indicates that the strings
@@ -37,7 +39,7 @@ package org.simmetrics;
  * 
  */
 
-public interface StringMetric extends Metric<String> {
+public interface StringMetric extends Metric<String>, Serializable {
 	/**
 	 * Measures the similarity between strings a and b. The measurement results
 	 * in a value between 0 and 1 (inclusive). A value of zero indicates that

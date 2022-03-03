@@ -2,7 +2,7 @@
  * #%L
  * Simmetrics Core
  * %%
- * Copyright (C) 2014 - 2016 Simmetrics Authors
+ * Copyright (C) 2014 - 2021 Simmetrics Authors
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -32,6 +32,7 @@ import static java.util.Arrays.copyOfRange;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -59,7 +60,7 @@ import com.google.common.collect.Sets;
  * The created tokenizers are immutable and thread-safe provided all their
  * components are also immutable and thread-safe.
  */
-public final class Tokenizers {
+public final class Tokenizers implements Serializable{
 
 	/**
 	 * Returns a tokenizer that splits a string into tokens around the pattern
@@ -293,7 +294,7 @@ public final class Tokenizers {
 		return new Filter(tokenizer, predicate);
 	}
 	
-	static class Filter implements Tokenizer {
+	static class Filter implements Tokenizer, Serializable {
 
 		static final class TransformFilter extends
 				Filter {
@@ -427,7 +428,7 @@ public final class Tokenizers {
 
 	}
 
-	static final class Recursive implements Tokenizer {
+	static final class Recursive implements Tokenizer, Serializable {
 
 		private final List<Tokenizer> tokenizers;
 
@@ -515,7 +516,7 @@ public final class Tokenizers {
 
 	}
 
-	static final class Split extends AbstractTokenizer {
+	static final class Split extends AbstractTokenizer implements Serializable {
 
 		private final Pattern pattern;
 
@@ -539,7 +540,7 @@ public final class Tokenizers {
 
 	}
 
-	static class Transform implements Tokenizer {
+	static class Transform implements Tokenizer, Serializable {
 		
 		static final class FilterTransform extends
 				Transform {
@@ -671,7 +672,7 @@ public final class Tokenizers {
 
 	}
 
-	static final class Whitespace extends AbstractTokenizer {
+	static final class Whitespace extends AbstractTokenizer implements Serializable {
 
 		private final Pattern pattern = Pattern.compile("\\s+");
 
