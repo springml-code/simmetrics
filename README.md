@@ -53,3 +53,5 @@ float result = metric.compare(scores1, scores2); // 0.4285
 
 Due to Java's [Unicode Character Representations](http://docs.oracle.com/javase/7/docs/api/java/lang/Character.html#unicode) some care must be taken when using string metrics that compare strings using char values. Using for example Smith-Waterman on a texts written in [Linear-A](https://en.wikipedia.org/wiki/Linear_A) will result in an unexpectedly high similarity as every other char is the same high surrogate. Metrics that operate on lists, sets, or multisets such as Cosine Similarity are not affected.
 
+## Simmetric Serialization Version Branch Updates ##
+This branch contains the serialization version of all simmetric library classes, so that anyone would be able to used with Apache Beam for computing analytics and finding Fuzzy Matching using Apache Beam powerfull processing model.
